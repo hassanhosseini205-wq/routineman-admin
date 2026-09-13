@@ -66,3 +66,20 @@ body{background:linear-gradient(145deg,#f8f9fd 0%,#f1f2f9 55%,#f7f4ff 100%);font
 }
 
 @media(max-width:390px){.stats-grid{grid-template-columns:1fr 1fr}.feature-list{grid-template-columns:1fr}.nav-item{font-size:.66rem;padding-inline:4px}}
+
+/* نسخه ۲۷: ساده‌سازی پنل و حالت غیرفعال سطح‌ها */
+.stats-grid{grid-template-columns:repeat(5,minmax(0,1fr))}
+.stat-combined strong{display:flex;align-items:center;justify-content:center;gap:8px}
+.stat-combined strong b{font:inherit}.stat-combined strong i{font-style:normal;color:var(--muted);font-size:1rem}
+.tier-name{margin:0;font-size:1.45rem;font-weight:900}
+.tier-name.gold{color:#9a6800}.tier-name.silver{color:#62697a}.tier-name.bronze{color:#9a4e27}
+.tier-card{transition:filter .25s ease,opacity .25s ease,background .25s ease}
+.tier-card.tier-disabled{filter:grayscale(1);opacity:.62;background:#f0f0f0}
+.tier-card.tier-disabled .feature-list,.tier-card.tier-disabled .btn{opacity:.72}
+
+@media(max-width:760px){
+  .workspace{padding-top:12px}
+  .stats-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .stat-combined{grid-column:span 2}
+  .tier-name{font-size:1.55rem}
+}
