@@ -14,7 +14,7 @@
 
   <main id="auth-view" class="auth-shell">
     <section class="auth-card">
-      <div class="brand-mark">✓</div>
+      <div class="brand-mark"><span>✓</span></div>
       <p class="eyebrow">RoutineMan</p>
       <h1>پنل مدیریت لایسنس</h1>
       <p class="muted">ورود فقط برای مدیران تأییدشده امکان‌پذیر است.</p>
@@ -23,13 +23,26 @@
         <label>رمز عبور<input id="login-password" type="password" autocomplete="current-password" minlength="8" required placeholder="حداقل ۸ کاراکتر"></label>
         <button class="btn primary" type="submit">ورود به پنل</button>
       </form>
-      <button id="show-signup" class="text-btn" type="button">ساخت حساب مدیر برای اولین بار</button>
-      <form id="signup-form" class="stack hidden">
-        <div class="divider"><span>حساب اولیه</span></div>
-        <label>ایمیل جدید<input id="signup-email" type="email" autocomplete="email" required></label>
-        <label>رمز جدید<input id="signup-password" type="password" autocomplete="new-password" minlength="8" required></label>
-        <button class="btn secondary" type="submit">ساخت حساب</button>
-        <p class="note">پس از ساخت حساب، ایمیل را برای تأیید سطح ادمین اعلام کن. رمز فقط نزد خودت می‌ماند.</p>
+      <button id="show-recovery" class="text-btn" type="button">رمز عبور را فراموش کرده‌ام</button>
+      <form id="recovery-form" class="stack hidden">
+        <div class="divider"><span>بازیابی امن</span></div>
+        <label>ایمیل حساب مدیر<input id="recovery-email" type="email" autocomplete="email" required placeholder="name@example.com"></label>
+        <button class="btn secondary" type="submit">ارسال لینک بازیابی به ایمیل</button>
+        <p class="note">لینک تغییر رمز فقط به ایمیل ثبت‌شده ارسال می‌شود.</p>
+      </form>
+    </section>
+  </main>
+
+  <main id="password-view" class="auth-shell hidden">
+    <section class="auth-card">
+      <div class="brand-mark"><span>↻</span></div>
+      <p class="eyebrow">بازیابی حساب</p>
+      <h1>رمز جدید تعیین کن</h1>
+      <p class="muted">رمز جدید حداقل ۸ کاراکتر باشد.</p>
+      <form id="password-form" class="stack">
+        <label>رمز جدید<input id="new-password" type="password" autocomplete="new-password" minlength="8" required></label>
+        <label>تکرار رمز جدید<input id="repeat-password" type="password" autocomplete="new-password" minlength="8" required></label>
+        <button class="btn primary" type="submit">ذخیره رمز جدید</button>
       </form>
     </section>
   </main>
