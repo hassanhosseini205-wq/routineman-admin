@@ -1,5 +1,5 @@
-const SUPABASE_URL = "https://oosfqmgzpomcjpicwcil.supabase.co";
-const API_KEY = "sb_publishable_WY3pQL9qwRsWAlT28ylHmw_WnEAJHXI";
+const SUPABASE_URL = "https://jjfqafbvyloaizkuxesg.supabase.co";
+const API_KEY = "sb_publishable_W6DeRKEfwlfDQQU8BS5A6w_NI_kCuEe";
 const FUNCTION_URL = `${SUPABASE_URL}/functions/v1/license-api`;
 const AUTH_URL = `${SUPABASE_URL}/auth/v1`;
 const APP_URL = "https://hassanhosseini205-wq.github.io/routineman-admin/";
