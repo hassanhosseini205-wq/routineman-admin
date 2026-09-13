@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="description" content="پنل خصوصی مدیریت لایسنس‌های RoutineMan">
+  <meta name="robots" content="noindex,nofollow">
+  <title>مدیریت لایسنس RoutineMan</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%236d3df5'/%3E%3Cpath d='M17 33l10 10 21-24' fill='none' stroke='white' stroke-width='8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <main id="auth-view" class="auth-shell">
+    <section class="auth-card">
+      <div class="brand-mark">✓</div>
+      <p class="eyebrow">RoutineMan</p>
+      <h1>پنل مدیریت لایسنس</h1>
+      <p class="muted">ورود فقط برای مدیران تأییدشده امکان‌پذیر است.</p>
+      <form id="login-form" class="stack">
+        <label>ایمیل مدیر<input id="login-email" type="email" autocomplete="username" required placeholder="name@example.com"></label>
+        <label>رمز عبور<input id="login-password" type="password" autocomplete="current-password" minlength="8" required placeholder="حداقل ۸ کاراکتر"></label>
+        <button class="btn primary" type="submit">ورود به پنل</button>
+      </form>
+      <button id="show-signup" class="text-btn" type="button">ساخت حساب مدیر برای اولین بار</button>
+      <form id="signup-form" class="stack hidden">
+        <div class="divider"><span>حساب اولیه</span></div>
+        <label>ایمیل جدید<input id="signup-email" type="email" autocomplete="email" required></label>
+        <label>رمز جدید<input id="signup-password" type="password" autocomplete="new-password" minlength="8" required></label>
+        <button class="btn secondary" type="submit">ساخت حساب</button>
+        <p class="note">پس از ساخت حساب، ایمیل را برای تأیید سطح ادمین اعلام کن. رمز فقط نزد خودت می‌ماند.</p>
+      </form>
+    </section>
+  </main>
+
+  <div id="app-view" class="app hidden">
+    <aside class="sidebar">
+      <div class="brand-row"><div class="brand-mark small">✓</div><div><b>RoutineMan</b><small>مرکز لایسنس</small></div></div>
+      <nav aria-label="بخش‌های پنل">
+        <button class="nav-item active" data-tab="licenses">◈ لایسنس‌ها</button>
+        <button class="nav-item" data-tab="tiers">◇ تنظیم سطح‌ها</button>
+      </nav>
+      <button id="logout" class="nav-item logout">خروج از حساب</button>
+    </aside>
+
+    <main class="workspace">
+      <header class="topbar">
+        <div><p class="eyebrow">پنل خصوصی</p><h1 id="page-title">مدیریت لایسنس‌ها</h1></div>
+        <div class="admin-chip"><span class="pulse"></span><span id="admin-email"></span></div>
+      </header>
+
+      <section id="licenses-tab">
+        <div class="stats-grid">
+          <article class="stat"><span>کل لایسنس‌ها</span><strong id="stat-total">۰</strong></article>
+          <article class="stat"><span>فعال</span><strong id="stat-active">۰</strong></article>
+          <article class="stat"><span>طلایی</span><strong id="stat-gold">۰</strong></article>
+          <article class="stat"><span>دستگاه فعال</span><strong id="stat-devices">۰</strong></article>
+        </div>
+
+        <div class="content-grid">
+          <section class="panel create-panel">
+            <div class="section-head"><div><p class="eyebrow">لایسنس تازه</p><h2>ساخت کد فعال‌سازی</h2></div><span class="icon-tile">＋</span></div>
+            <form id="create-license" class="stack">
+              <label>سطح دسترسی<select id="new-tier"><option value="gold">طلایی</option><option value="silver">نقره‌ای</option><option value="bronze">برنزی</option></select></label>
+              <div class="two-col">
+                <label>تعداد دستگاه<input id="new-max-devices" type="number" min="1" max="10" value="1"></label>
+                <label>تاریخ پایان<input id="new-expiry" type="date"></label>
+              </div>
+              <label>نام یا توضیح مشتری<textarea id="new-note" maxlength="300" rows="3" placeholder="مثلاً: اشتراک یک‌ساله رضا"></textarea></label>
+              <button class="btn primary" type="submit">ساخت لایسنس امن</button>
+            </form>
+            <div id="new-key-result" class="key-result hidden">
+              <span>این کد فقط همین یک‌بار نمایش داده می‌شود</span>
+              <strong id="new-key"></strong>
+              <button id="copy-key" class="btn secondary" type="button">کپی کد</button>
+            </div>
+          </section>
+
+          <section class="panel list-panel">
+            <div class="section-head wrap"><div><p class="eyebrow">فهرست</p><h2>لایسنس‌های صادرشده</h2></div><div class="filters"><input id="search" type="search" placeholder="جست‌وجو در کد یا دستگاه"><select id="status-filter"><option value="all">همه وضعیت‌ها</option><option value="active">فعال</option><option value="suspended">معلق</option><option value="revoked">لغوشده</option></select></div></div>
+            <div id="license-list" class="license-list"><div class="empty">درحال دریافت اطلاعات…</div></div>
+          </section>
+        </div>
+      </section>
+
+      <section id="tiers-tab" class="hidden">
+        <div class="section-intro"><div><p class="eyebrow">قابل تغییر توسط ادمین</p><h2>امکانات سطح‌ها</h2></div><p>هر تغییری روی دسترسی کاربران همان سطح اعمال می‌شود.</p></div>
+        <div id="tiers-list" class="tiers-grid"><div class="panel empty">درحال دریافت سطح‌ها…</div></div>
+      </section>
+    </main>
+  </div>
+
+  <dialog id="edit-dialog">
+    <form id="edit-form" class="dialog-card">
+      <div class="section-head"><div><p class="eyebrow">ویرایش دسترسی</p><h2>تنظیم لایسنس</h2></div><button id="close-dialog" class="icon-btn" type="button" aria-label="بستن">×</button></div>
+      <input id="edit-id" type="hidden">
+      <label>سطح<select id="edit-tier"><option value="gold">طلایی</option><option value="silver">نقره‌ای</option><option value="bronze">برنزی</option></select></label>
+      <label>وضعیت<select id="edit-status"><option value="active">فعال</option><option value="suspended">معلق</option><option value="revoked">لغوشده</option></select></label>
+      <div class="two-col"><label>تعداد دستگاه<input id="edit-max" type="number" min="1" max="10"></label><label>تاریخ پایان<input id="edit-expiry" type="date"></label></div>
+      <button class="btn primary" type="submit">ذخیره تغییرات</button>
+    </form>
+  </dialog>
+  <script src="./app.js" defer></script>
+</body>
+</html>
