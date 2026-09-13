@@ -7,7 +7,7 @@
   <meta name="robots" content="noindex,nofollow">
   <title>مدیریت لایسنس RoutineMan</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%236d3df5'/%3E%3Cpath d='M17 33l10 10 21-24' fill='none' stroke='white' stroke-width='8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="./styles.css?v=27">
+  <link rel="stylesheet" href="./styles.css?v=28">
 </head>
 <body>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
@@ -74,10 +74,10 @@
               <label>سطح دسترسی<select id="new-tier"><option value="gold">طلایی</option><option value="silver">نقره‌ای</option><option value="bronze">برنزی</option></select></label>
               <div class="two-col">
                 <label>تعداد دستگاه<input id="new-max-devices" type="number" min="1" max="10" value="1"></label>
-                <label>تاریخ و ساعت پایان<input id="new-expiry" type="datetime-local" step="60"></label>
+                <label>تاریخ پایان شمسی<div class="expiry-fields"><input id="new-expiry-date" type="text" inputmode="numeric" placeholder="1405/06/22" maxlength="10"><input id="new-expiry-time" type="text" inputmode="numeric" placeholder="17:10" maxlength="5"></div></label>
               </div>
               <label>نام یا توضیح مشتری<textarea id="new-note" maxlength="300" rows="3" placeholder="مثلاً: اشتراک یک‌ساله رضا"></textarea></label>
-              <button class="btn primary" type="submit">ساخت لایسنس امن</button>
+              <button class="btn primary" type="submit">ساخت لایسنس</button>
             </form>
             <div id="new-key-result" class="key-result hidden">
               <span>این کد فقط همین یک‌بار نمایش داده می‌شود</span>
@@ -87,13 +87,14 @@
           </section>
 
           <section class="panel list-panel">
-            <div class="section-head wrap"><div><p class="eyebrow">فهرست</p><h2>لایسنس‌های صادرشده</h2></div><div class="filters"><input id="search" type="search" placeholder="جست‌وجو در کد یا دستگاه"><select id="status-filter"><option value="all">همه وضعیت‌ها</option><option value="active">فعال</option><option value="suspended">معلق</option><option value="revoked">لغوشده</option></select></div></div>
+            <div class="section-head wrap"><h2>لایسنس‌های ساخته‌شده</h2><div class="filters"><input id="search" type="search" placeholder="جست‌وجو در کد یا دستگاه"><select id="status-filter"><option value="all">همه وضعیت‌ها</option><option value="active">فعال</option><option value="suspended">معلق</option><option value="revoked">لغوشده</option></select></div></div>
             <div id="license-list" class="license-list"><div class="empty">درحال دریافت اطلاعات…</div></div>
           </section>
         </div>
       </section>
 
       <section id="tiers-tab" class="hidden">
+        <div class="tier-guide" aria-label="ترتیب سطح‌ها"><span class="gold">طلایی</span><span class="silver">نقره‌ای</span><span class="bronze">برنزی</span></div>
         <div id="tiers-list" class="tiers-grid"><div class="panel empty">درحال دریافت سطح‌ها…</div></div>
       </section>
     </main>
@@ -101,14 +102,14 @@
 
   <dialog id="edit-dialog">
     <form id="edit-form" class="dialog-card">
-      <div class="section-head"><div><p class="eyebrow">ویرایش دسترسی</p><h2>تنظیم لایسنس</h2></div><button id="close-dialog" class="icon-btn" type="button" aria-label="بستن">×</button></div>
+      <div class="section-head"><h2>تنظیم لایسنس</h2><button id="close-dialog" class="icon-btn" type="button" aria-label="بستن">×</button></div>
       <input id="edit-id" type="hidden">
       <label>سطح<select id="edit-tier"><option value="gold">طلایی</option><option value="silver">نقره‌ای</option><option value="bronze">برنزی</option></select></label>
       <label>وضعیت<select id="edit-status"><option value="active">فعال</option><option value="suspended">معلق</option><option value="revoked">لغوشده</option></select></label>
-      <div class="two-col"><label>تعداد دستگاه<input id="edit-max" type="number" min="1" max="10"></label><label>تاریخ و ساعت پایان<input id="edit-expiry" type="datetime-local" step="60"></label></div>
+      <div class="two-col"><label>تعداد دستگاه<input id="edit-max" type="number" min="1" max="10"></label><label>تاریخ پایان شمسی<div class="expiry-fields"><input id="edit-expiry-date" type="text" inputmode="numeric" placeholder="1405/06/22" maxlength="10"><input id="edit-expiry-time" type="text" inputmode="numeric" placeholder="17:10" maxlength="5"></div></label></div>
       <button class="btn primary" type="submit">ذخیره تغییرات</button>
     </form>
   </dialog>
-  <script src="./app.js?v=27" defer></script>
+  <script src="./app.js?v=28" defer></script>
 </body>
 </html>
