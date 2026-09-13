@@ -78,7 +78,7 @@
               <label>سطح دسترسی<select id="new-tier"><option value="gold">طلایی</option><option value="silver">نقره‌ای</option><option value="bronze">برنزی</option></select></label>
               <div class="two-col">
                 <label>تعداد دستگاه<input id="new-max-devices" type="number" min="1" max="10" value="1"></label>
-                <label>تاریخ پایان<input id="new-expiry" type="date"></label>
+                <label>تاریخ و ساعت پایان<input id="new-expiry" type="datetime-local" step="60"></label>
               </div>
               <label>نام یا توضیح مشتری<textarea id="new-note" maxlength="300" rows="3" placeholder="مثلاً: اشتراک یک‌ساله رضا"></textarea></label>
               <button class="btn primary" type="submit">ساخت لایسنس امن</button>
@@ -110,10 +110,10 @@
       <input id="edit-id" type="hidden">
       <label>سطح<select id="edit-tier"><option value="gold">طلایی</option><option value="silver">نقره‌ای</option><option value="bronze">برنزی</option></select></label>
       <label>وضعیت<select id="edit-status"><option value="active">فعال</option><option value="suspended">معلق</option><option value="revoked">لغوشده</option></select></label>
-      <div class="two-col"><label>تعداد دستگاه<input id="edit-max" type="number" min="1" max="10"></label><label>تاریخ پایان<input id="edit-expiry" type="date"></label></div>
+      <div class="two-col"><label>تعداد دستگاه<input id="edit-max" type="number" min="1" max="10"></label><label>تاریخ و ساعت پایان<input id="edit-expiry" type="datetime-local" step="60"></label></div>
       <button class="btn primary" type="submit">ذخیره تغییرات</button>
     </form>
   </dialog>
-  <script src="./app.js?v=24" defer></script>
+  <script src="./app.js?v=25" defer></script>
 </body>
 </html>
