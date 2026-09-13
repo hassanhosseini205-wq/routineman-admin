@@ -65,6 +65,21 @@ body{background:linear-gradient(145deg,#f8f9fd 0%,#f1f2f9 55%,#f7f4ff 100%);font
   .brand-mark{width:56px;height:56px;border-radius:18px;font-size:1.65rem}
 }
 
+/* نسخه ۲۸: تاریخ شمسی و ناوبری تفکیک‌شده */
+.expiry-fields{display:grid;grid-template-columns:minmax(0,1fr) 88px;gap:8px;direction:ltr}
+.expiry-fields input{text-align:center;font-weight:800}
+.tier-guide{display:flex;align-items:center;justify-content:center;gap:clamp(24px,7vw,70px);margin:4px 0 22px;font-size:1.35rem;font-weight:900}
+.tier-guide .gold{color:#9a6800}.tier-guide .silver{color:#62697a}.tier-guide .bronze{color:#9a4e27}
+@media(max-width:760px){
+  .sidebar{background:#0d0d12;border-color:#27272f}
+  .nav-item,.logout{border:1px solid #696975;background:#34343d;color:#fff}
+  .nav-item:hover,.nav-item.active{background:#4a465b;border-color:#777184;color:#fff}
+  .logout{background:#641f2a;border-color:#a94a59;color:#fff}
+  .tier-guide{margin:0 0 14px;gap:28px;font-size:1.05rem}
+  .meta-row{font-size:.76rem;font-weight:800}
+  .meta-row span{padding:8px 5px}
+}
+
 @media(max-width:390px){.stats-grid{grid-template-columns:1fr 1fr}.feature-list{grid-template-columns:1fr}.nav-item{font-size:.66rem;padding-inline:4px}}
 
 /* نسخه ۲۷: ساده‌سازی پنل و حالت غیرفعال سطح‌ها */
