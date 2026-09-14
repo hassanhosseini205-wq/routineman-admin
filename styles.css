@@ -74,7 +74,7 @@ body{background:linear-gradient(145deg,#f8f9fd 0%,#f1f2f9 55%,#f7f4ff 100%);font
 .quick-renew span{font-weight:800}.quick-renew button{border:1px solid #d9d1f4;border-radius:9px;background:#fff;color:var(--purple-2);padding:6px 9px;font-weight:800}
 .audit-list{display:grid;gap:9px;margin-top:16px}.audit-row{display:grid;grid-template-columns:150px 1fr;gap:12px;padding:11px 13px;border:1px solid var(--line);border-radius:13px;background:#faf9fd}.audit-row time{direction:ltr;color:var(--muted);font-size:.75rem}.audit-row strong{display:block}.audit-row small{color:var(--muted)}
 @media(max-width:760px){
-  .sidebar{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .sidebar{grid-template-columns:repeat(5,minmax(0,1fr))}
   .nav-item,.logout{white-space:normal;line-height:1.3;font-size:.62rem}
   .audit-row{grid-template-columns:1fr;gap:3px}
   .customer-line{font-size:.72rem}
@@ -112,4 +112,24 @@ body{background:linear-gradient(145deg,#f8f9fd 0%,#f1f2f9 55%,#f7f4ff 100%);font
   .stats-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
   .stat-combined{grid-column:span 2}
   .tier-name{font-size:1.55rem}
+}
+
+/* نسخه ۳۰: فیلتر حرفه‌ای، سطل زباله و کنترل دستگاه */
+.advanced-filters{display:grid;grid-template-columns:minmax(180px,1.6fr) repeat(4,minmax(120px,1fr));width:100%}
+.advanced-filters input,.advanced-filters select{min-width:0}
+.device>div:first-child{display:flex;flex-direction:column;gap:3px}
+.device small{display:block;color:var(--muted);font-size:.72rem}
+.device-actions,.trash-actions{display:flex;gap:7px;flex-wrap:wrap}
+.device-actions button,.blocked-label{border:0;border-radius:9px;padding:6px 9px;font:inherit}
+.device-actions button{color:#5630c9;background:#f0eaff}
+.device-actions .danger-mini{color:#a61f37;background:#fff0f2}
+.device.blocked{filter:grayscale(1);opacity:.72}
+.blocked-label{color:#a61f37;background:#fff0f2}
+.danger-outline{color:#b4233c!important;background:#fff4f5!important;border:1px solid #ef9baa!important}
+.trash-panel{max-width:1100px;margin:auto}
+.license-card.trashed{filter:grayscale(.55);border-style:dashed}
+@media(max-width:760px){
+  .advanced-filters{grid-template-columns:1fr 1fr}
+  .advanced-filters input{grid-column:1/-1}
+  .trash-actions{width:100%}
 }
