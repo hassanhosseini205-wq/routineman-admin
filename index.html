@@ -7,7 +7,7 @@
   <meta name="robots" content="noindex,nofollow">
   <title>مدیریت لایسنس RoutineMan</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%236d3df5'/%3E%3Cpath d='M17 33l10 10 21-24' fill='none' stroke='white' stroke-width='8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="./styles.css?v=28">
+  <link rel="stylesheet" href="./styles.css?v=29">
 </head>
 <body>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
@@ -53,12 +53,14 @@
       <nav aria-label="بخش‌های پنل">
         <button class="nav-item active" data-tab="licenses">◈ لایسنس‌ها</button>
         <button class="nav-item" data-tab="tiers">◇ تنظیم سطح‌ها</button>
+        <button class="nav-item" data-tab="audit">◎ تاریخچه</button>
       </nav>
       <button id="logout" class="nav-item logout">خروج از حساب</button>
     </aside>
 
     <main class="workspace">
       <section id="licenses-tab">
+        <div id="expiry-alert" class="expiry-alert hidden"></div>
         <div class="stats-grid">
           <article class="stat"><span>کل لایسنس‌ها</span><strong id="stat-total">۰</strong></article>
           <article class="stat stat-combined"><span>فعال / دستگاه فعال</span><strong><b id="stat-active">۰</b><i>/</i><b id="stat-devices">۰</b></strong></article>
@@ -76,6 +78,8 @@
                 <label>تعداد دستگاه<input id="new-max-devices" type="number" min="1" max="10" value="1"></label>
                 <label>تاریخ پایان شمسی<div class="expiry-fields"><input id="new-expiry-date" type="text" inputmode="numeric" placeholder="1405/06/22" maxlength="10"><input id="new-expiry-time" type="text" inputmode="numeric" placeholder="17:10" maxlength="5"></div></label>
               </div>
+              <div class="two-col"><label>نام مشتری<input id="new-customer-name" type="text" maxlength="120" placeholder="نام و نام خانوادگی"></label><label>شماره تماس<input id="new-customer-phone" type="tel" maxlength="30" placeholder="09xxxxxxxxx"></label></div>
+              <label>مبلغ خرید (تومان)<input id="new-purchase-amount" type="number" min="0" step="1000" placeholder="اختیاری"></label>
               <label>نام یا توضیح مشتری<textarea id="new-note" maxlength="300" rows="3" placeholder="مثلاً: اشتراک یک‌ساله رضا"></textarea></label>
               <button class="btn primary" type="submit">ساخت لایسنس</button>
             </form>
@@ -97,6 +101,10 @@
         <div class="tier-guide" aria-label="ترتیب سطح‌ها"><span class="gold">طلایی</span><span class="silver">نقره‌ای</span><span class="bronze">برنزی</span></div>
         <div id="tiers-list" class="tiers-grid"><div class="panel empty">درحال دریافت سطح‌ها…</div></div>
       </section>
+
+      <section id="audit-tab" class="hidden">
+        <section class="panel audit-panel"><div class="section-head"><h2>تاریخچه تغییرات</h2><button id="refresh-audit" class="btn secondary" type="button">بروزرسانی</button></div><div id="audit-list" class="audit-list"><div class="empty">برای دریافت تاریخچه، بروزرسانی را بزن.</div></div></section>
+      </section>
     </main>
   </div>
 
@@ -107,9 +115,12 @@
       <label>سطح<select id="edit-tier"><option value="gold">طلایی</option><option value="silver">نقره‌ای</option><option value="bronze">برنزی</option></select></label>
       <label>وضعیت<select id="edit-status"><option value="active">فعال</option><option value="suspended">معلق</option><option value="revoked">لغوشده</option></select></label>
       <div class="two-col"><label>تعداد دستگاه<input id="edit-max" type="number" min="1" max="10"></label><label>تاریخ پایان شمسی<div class="expiry-fields"><input id="edit-expiry-date" type="text" inputmode="numeric" placeholder="1405/06/22" maxlength="10"><input id="edit-expiry-time" type="text" inputmode="numeric" placeholder="17:10" maxlength="5"></div></label></div>
+      <div class="two-col"><label>نام مشتری<input id="edit-customer-name" type="text" maxlength="120"></label><label>شماره تماس<input id="edit-customer-phone" type="tel" maxlength="30"></label></div>
+      <label>مبلغ خرید (تومان)<input id="edit-purchase-amount" type="number" min="0" step="1000"></label>
+      <div class="quick-renew"><span>تمدید سریع:</span><button type="button" data-renew="30">۱ ماه</button><button type="button" data-renew="90">۳ ماه</button><button type="button" data-renew="180">۶ ماه</button><button type="button" data-renew="365">۱ سال</button></div>
       <button class="btn primary" type="submit">ذخیره تغییرات</button>
     </form>
   </dialog>
-  <script src="./app.js?v=28" defer></script>
+  <script src="./app.js?v=29" defer></script>
 </body>
 </html>
