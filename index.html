@@ -7,7 +7,7 @@
   <meta name="robots" content="noindex,nofollow">
   <title>مدیریت لایسنس RoutineMan</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%236d3df5'/%3E%3Cpath d='M17 33l10 10 21-24' fill='none' stroke='white' stroke-width='8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="./styles.css?v=29">
+  <link rel="stylesheet" href="./styles.css?v=30">
 </head>
 <body>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
@@ -54,6 +54,7 @@
         <button class="nav-item active" data-tab="licenses">◈ لایسنس‌ها</button>
         <button class="nav-item" data-tab="tiers">◇ تنظیم سطح‌ها</button>
         <button class="nav-item" data-tab="audit">◎ تاریخچه</button>
+        <button class="nav-item" data-tab="trash">♲ سطل زباله</button>
       </nav>
       <button id="logout" class="nav-item logout">خروج از حساب</button>
     </aside>
@@ -91,7 +92,7 @@
           </section>
 
           <section class="panel list-panel">
-            <div class="section-head wrap"><h2>لایسنس‌های ساخته‌شده</h2><div class="filters"><input id="search" type="search" placeholder="جست‌وجو در کد یا دستگاه"><select id="status-filter"><option value="all">همه وضعیت‌ها</option><option value="active">فعال</option><option value="suspended">معلق</option><option value="revoked">لغوشده</option></select></div></div>
+            <div class="section-head wrap"><h2>لایسنس‌های ساخته‌شده</h2><div class="filters advanced-filters"><input id="search" type="search" placeholder="کد، دستگاه یا مشتری"><select id="status-filter"><option value="all">همه وضعیت‌ها</option><option value="active">فعال</option><option value="suspended">معلق</option><option value="revoked">لغوشده</option></select><select id="tier-filter"><option value="all">همه سطح‌ها</option><option value="gold">طلایی</option><option value="silver">نقره‌ای</option><option value="bronze">برنزی</option></select><select id="expiry-filter"><option value="all">همه تاریخ‌ها</option><option value="expired">منقضی‌شده</option><option value="soon">پایان تا ۷ روز</option><option value="valid">دارای اعتبار</option><option value="unlimited">بدون انقضا</option></select><select id="device-filter"><option value="all">همه دستگاه‌ها</option><option value="none">بدون دستگاه</option><option value="available">ظرفیت آزاد</option><option value="full">ظرفیت تکمیل</option></select></div></div>
             <div id="license-list" class="license-list"><div class="empty">درحال دریافت اطلاعات…</div></div>
           </section>
         </div>
@@ -104,6 +105,9 @@
 
       <section id="audit-tab" class="hidden">
         <section class="panel audit-panel"><div class="section-head"><h2>تاریخچه تغییرات</h2><button id="refresh-audit" class="btn secondary" type="button">بروزرسانی</button></div><div id="audit-list" class="audit-list"><div class="empty">برای دریافت تاریخچه، بروزرسانی را بزن.</div></div></section>
+      </section>
+      <section id="trash-tab" class="hidden">
+        <section class="panel trash-panel"><div class="section-head"><h2>سطل زباله لایسنس‌ها</h2><button id="refresh-trash" class="btn secondary" type="button">بروزرسانی</button></div><p class="note">لایسنس حذف‌شده در برنامه کار نمی‌کند. می‌توانی آن را برگردانی یا برای همیشه پاک کنی.</p><div id="trash-list" class="license-list"><div class="empty">برای دریافت سطل زباله، بروزرسانی را بزن.</div></div></section>
       </section>
     </main>
   </div>
@@ -119,8 +123,9 @@
       <label>مبلغ خرید (تومان)<input id="edit-purchase-amount" type="number" min="0" step="1000"></label>
       <div class="quick-renew"><span>تمدید سریع:</span><button type="button" data-renew="30">۱ ماه</button><button type="button" data-renew="90">۳ ماه</button><button type="button" data-renew="180">۶ ماه</button><button type="button" data-renew="365">۱ سال</button></div>
       <button class="btn primary" type="submit">ذخیره تغییرات</button>
+      <button id="trash-license" class="btn danger-outline" type="button">انتقال لایسنس به سطل زباله</button>
     </form>
   </dialog>
-  <script src="./app.js?v=29" defer></script>
+  <script src="./app.js?v=30" defer></script>
 </body>
 </html>
