@@ -120,6 +120,55 @@ body{background:linear-gradient(145deg,#f8f9fd 0%,#f1f2f9 55%,#f7f4ff 100%);font
 /* نسخه ۳۷: تاریخ و ساعت پایان در یک کادر */
 .expiry-display{direction:rtl}
 
+/* نسخه ۳۸: چهار صفحه تیره، سطح‌های آبشاری و تنظیمات یکپارچه */
+.app{background:#08090c;color:#fff}
+.app .workspace{background:#08090c;color:#fff}
+.app .panel,.app .stat{background:#15161b;border-color:#2d2f38;color:#fff;box-shadow:0 12px 34px rgba(0,0,0,.3)}
+.app .note,.app .muted,.app .meta-row,.app .device,.app .device small,.app .empty,.app .audit-row time,.app .audit-row small,.app .security-block p{color:#b9bbc5}
+.app input,.app select,.app textarea{background:#22242b;border-color:#3b3e48;color:#fff;color-scheme:dark}
+.app input::placeholder,.app textarea::placeholder{color:#9295a0}
+.app .jalali-trigger{background-color:#22242b}
+.app .license-card{background:#1b1c22;border-color:#343640;color:#fff}
+.app .license-card:hover{border-color:#7350e8;box-shadow:0 10px 24px rgba(0,0,0,.28)}
+.app .customer-line{color:#e7e1ff}
+.app .audit-row{background:#1b1c22;border-color:#343640}
+.app .security-block{background:#1b1c22;border-color:#343640}
+.app .danger-zone{background:#241419;border-color:#752d3a}
+.app .quick-renew,.app .time-picker{background:#202127}
+.app .quick-renew button{background:#2b2935;border-color:#49435f;color:#d7caff}
+.tiers-grid{grid-template-columns:1fr;max-width:900px;margin-inline:auto;gap:14px}
+.tier-card{padding:0;overflow:hidden}
+.tier-title{min-height:84px;padding:16px 20px;gap:14px}
+.tier-accordion-toggle{min-width:0;flex:1;display:flex;align-items:center;justify-content:space-between;gap:16px;border:0;background:transparent;color:#fff;text-align:right;padding:8px 0}
+.tier-arrow{font-size:1.6rem;line-height:1;transition:transform .22s ease;color:#a98cff}
+.tier-accordion-toggle[aria-expanded="true"] .tier-arrow{transform:rotate(180deg)}
+.tier-body{padding:0 20px 20px;border-top:1px solid #30323a}
+.tier-card.tier-disabled{background:#141519;filter:grayscale(.65);opacity:.7}
+.embedded-trash{max-width:1100px;margin:18px auto 0;padding:0;overflow:hidden}
+.embedded-trash summary{display:flex;align-items:center;min-height:68px;padding:15px 20px;font-weight:900;cursor:pointer;list-style:none;color:#fff}
+.embedded-trash summary::-webkit-details-marker{display:none}
+.embedded-trash summary:after{content:"⌄";margin-right:auto;color:#a98cff;font-size:1.35rem;transition:transform .2s}
+.embedded-trash[open] summary:after{transform:rotate(180deg)}
+.trash-content{padding:0 20px 20px;border-top:1px solid #30323a}
+.history-actions,.account-actions{display:flex;gap:9px;flex-wrap:wrap}
+.delete-history{background:#c9152e!important;color:#fff!important;border:1px solid #ff5268!important;box-shadow:0 8px 20px rgba(201,21,46,.28)}
+.delete-history:hover{background:#e11935!important}
+.logout-current{background:#892033;color:#fff;border:1px solid #c94b61}
+.account-actions .btn{flex:1;min-width:180px}
+
+@media(max-width:760px){
+  .sidebar{grid-template-columns:none}
+  .sidebar nav{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));width:100%;gap:7px}
+  .nav-item{font-size:.7rem;padding:10px 4px;min-height:48px}
+  .workspace{padding-bottom:92px}
+  .tier-title{min-height:72px;padding:12px 15px}
+  .tier-body{padding:0 15px 15px}
+  .embedded-trash summary{padding-inline:15px}
+  .trash-content{padding:0 15px 15px}
+  .audit-panel .section-head{align-items:stretch;flex-direction:column}
+  .history-actions{display:grid;grid-template-columns:1fr 1fr}
+}
+
 /* نسخه ۲۷: ساده‌سازی پنل و حالت غیرفعال سطح‌ها */
 .stats-grid{grid-template-columns:repeat(5,minmax(0,1fr))}
 .stat-combined strong{display:flex;align-items:center;justify-content:center;gap:8px}
@@ -158,3 +207,10 @@ body{background:linear-gradient(145deg,#f8f9fd 0%,#f1f2f9 55%,#f7f4ff 100%);font
   .advanced-filters input{grid-column:1/-1}
   .trash-actions{width:100%}
 }
+
+/* تثبیت نهایی رنگ‌های نسخه ۳۸ پس از قوانین قدیمی */
+.app .stat strong,.app .license-code{color:#fff}
+.app .tier-card.tier-disabled{background:#141519;filter:grayscale(.65);opacity:.7}
+.app .feature{background:#202127;color:#f4f4f7}
+.app .feature:has(input:checked){background:#2b2540;color:#fff}
+.app .meta-row span{background:#22242b;color:#c9cbd3}

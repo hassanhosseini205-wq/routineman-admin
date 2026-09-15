@@ -7,7 +7,7 @@
   <meta name="robots" content="noindex,nofollow">
   <title>مدیریت لایسنس RoutineMan</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%236d3df5'/%3E%3Cpath d='M17 33l10 10 21-24' fill='none' stroke='white' stroke-width='8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="./styles.css?v=37">
+  <link rel="stylesheet" href="./styles.css?v=38">
 </head>
 <body>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
@@ -68,10 +68,8 @@
         <button class="nav-item active" data-tab="licenses">◈ لایسنس‌ها</button>
         <button class="nav-item" data-tab="tiers">◇ تنظیم سطح‌ها</button>
         <button class="nav-item" data-tab="audit">◎ تاریخچه</button>
-        <button class="nav-item" data-tab="trash">♲ سطل زباله</button>
-        <button class="nav-item" data-tab="security">⌾ امنیت</button>
+        <button class="nav-item" data-tab="settings">◇ تنظیمات</button>
       </nav>
-      <button id="logout" class="nav-item logout">خروج از حساب</button>
     </aside>
 
     <main class="workspace">
@@ -111,20 +109,20 @@
             <div id="license-list" class="license-list"><div class="empty">درحال دریافت اطلاعات…</div></div>
           </section>
         </div>
+        <details id="trash-section" class="panel embedded-trash">
+          <summary>♲ سطل زباله لایسنس‌ها</summary>
+          <div class="trash-content"><div class="section-head"><h2>لایسنس‌های حذف‌شده</h2><button id="refresh-trash" class="btn secondary" type="button">بروزرسانی</button></div><p class="note">لایسنس حذف‌شده در برنامه کار نمی‌کند. می‌توانی آن را برگردانی یا برای همیشه پاک کنی.</p><div id="trash-list" class="license-list"><div class="empty">برای دریافت سطل زباله، این بخش را باز کن.</div></div></div>
+        </details>
       </section>
 
       <section id="tiers-tab" class="hidden">
-        <div class="tier-guide" aria-label="ترتیب سطح‌ها"><span class="gold">طلایی</span><span class="silver">نقره‌ای</span><span class="bronze">برنزی</span></div>
         <div id="tiers-list" class="tiers-grid"><div class="panel empty">درحال دریافت سطح‌ها…</div></div>
       </section>
 
       <section id="audit-tab" class="hidden">
-        <section class="panel audit-panel"><div class="section-head"><h2>تاریخچه تغییرات</h2><button id="refresh-audit" class="btn secondary" type="button">بروزرسانی</button></div><div id="audit-list" class="audit-list"><div class="empty">برای دریافت تاریخچه، بروزرسانی را بزن.</div></div></section>
+        <section class="panel audit-panel"><div class="section-head"><h2>تاریخچه تغییرات</h2><div class="history-actions"><button id="refresh-audit" class="btn secondary" type="button">بروزرسانی</button><button id="delete-audit" class="btn delete-history" type="button">حذف تاریخچه</button></div></div><div id="audit-list" class="audit-list"><div class="empty">برای دریافت تاریخچه، بروزرسانی را بزن.</div></div></section>
       </section>
-      <section id="trash-tab" class="hidden">
-        <section class="panel trash-panel"><div class="section-head"><h2>سطل زباله لایسنس‌ها</h2><button id="refresh-trash" class="btn secondary" type="button">بروزرسانی</button></div><p class="note">لایسنس حذف‌شده در برنامه کار نمی‌کند. می‌توانی آن را برگردانی یا برای همیشه پاک کنی.</p><div id="trash-list" class="license-list"><div class="empty">برای دریافت سطل زباله، بروزرسانی را بزن.</div></div></section>
-      </section>
-      <section id="security-tab" class="hidden">
+      <section id="settings-tab" class="hidden">
         <section class="panel security-panel">
           <div class="section-head"><h2>امنیت حساب مدیر</h2><span id="security-badge" class="security-badge">درحال بررسی…</span></div>
           <p class="note">برای ساخت، حذف، ویرایش و مسدودسازی لایسنس‌ها، ورود دومرحله‌ای لازم است.</p>
@@ -147,7 +145,7 @@
           </div>
           <div class="security-block danger-zone">
             <h3>مدیریت نشست‌ها</h3>
-            <button id="logout-all" class="btn danger-outline" type="button">خروج از همه دستگاه‌ها</button>
+            <div class="account-actions"><button id="logout" class="btn logout-current" type="button">خروج از حساب</button><button id="logout-all" class="btn danger-outline" type="button">خروج از همه دستگاه‌ها</button></div>
           </div>
         </section>
       </section>
@@ -177,6 +175,6 @@
       <div class="calendar-actions"><button id="jalali-clear" class="btn danger" type="button">بدون انقضا</button><button id="jalali-cancel" class="btn secondary" type="button">انصراف</button><button id="jalali-apply" class="btn primary" type="button">ثبت تاریخ و ساعت</button></div>
     </div>
   </div>
-  <script src="./app.js?v=37" defer></script>
+  <script src="./app.js?v=38" defer></script>
 </body>
 </html>
