@@ -85,8 +85,8 @@ body{background:linear-gradient(145deg,#f8f9fd 0%,#f1f2f9 55%,#f7f4ff 100%);font
 @media(max-width:760px){.security-block{padding:14px}.sidebar{gap:4px}.nav-item,.logout{font-size:.57rem;padding-inline:2px}}
 
 /* نسخه ۲۸: تاریخ شمسی و ناوبری تفکیک‌شده */
-.expiry-fields{display:grid;grid-template-columns:minmax(0,1fr) 88px;gap:8px;direction:ltr}
-.expiry-fields input{text-align:center;font-weight:800}
+.expiry-fields{display:block;direction:ltr}
+.expiry-fields .expiry-display{width:100%;text-align:center;font-weight:800}
 .tier-guide{display:flex;align-items:center;justify-content:center;gap:clamp(24px,7vw,70px);margin:4px 0 22px;font-size:1.35rem;font-weight:900}
 .tier-guide .gold{color:#9a6800}.tier-guide .silver{color:#62697a}.tier-guide .bronze{color:#9a4e27}
 @media(max-width:760px){
@@ -116,6 +116,9 @@ body{background:linear-gradient(145deg,#f8f9fd 0%,#f1f2f9 55%,#f7f4ff 100%);font
 
 /* نسخه ۳۶: لایه سازگار انتخابگر شمسی برای مرورگر موبایل */
 .calendar-open{overflow:hidden}.jalali-overlay{position:fixed;z-index:1000;inset:0;display:grid;place-items:center;padding:12px;background:rgba(16,14,28,.62);backdrop-filter:blur(5px)}.jalali-overlay .jalali-card{max-height:calc(100svh - 24px);overflow:auto}
+
+/* نسخه ۳۷: تاریخ و ساعت پایان در یک کادر */
+.expiry-display{direction:rtl}
 
 /* نسخه ۲۷: ساده‌سازی پنل و حالت غیرفعال سطح‌ها */
 .stats-grid{grid-template-columns:repeat(5,minmax(0,1fr))}
