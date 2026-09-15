@@ -107,6 +107,10 @@ body{background:linear-gradient(145deg,#f8f9fd 0%,#f1f2f9 55%,#f7f4ff 100%);font
 .restore-summary strong{font-size:.95rem}.restore-summary span{font-weight:800}.restore-summary small{color:#4e6e64}.restore-summary .btn{justify-self:start;margin-top:3px}
 @media(max-width:760px){.export-actions{grid-template-columns:1fr 1fr}.restore-btn{grid-column:1/-1}.restore-summary .btn{width:100%}}
 
+/* نسخه ۳۴: کارت، اشتراک و چاپ لایسنس */
+.license-card-actions{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:12px}.license-card-actions .btn{padding:9px 7px;font-size:.76rem}.share-btn{background:#e7f8f1;color:#147554}.print-btn{background:#eef1f7;color:#384153}
+@media(max-width:420px){.license-card-actions{grid-template-columns:1fr}.license-card-actions .btn{width:100%}}
+
 /* نسخه ۲۷: ساده‌سازی پنل و حالت غیرفعال سطح‌ها */
 .stats-grid{grid-template-columns:repeat(5,minmax(0,1fr))}
 .stat-combined strong{display:flex;align-items:center;justify-content:center;gap:8px}
