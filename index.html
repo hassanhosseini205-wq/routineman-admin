@@ -7,7 +7,7 @@
   <meta name="robots" content="noindex,nofollow">
   <title>مدیریت لایسنس RoutineMan</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%236d3df5'/%3E%3Cpath d='M17 33l10 10 21-24' fill='none' stroke='white' stroke-width='8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="./styles.css?v=38">
+  <link rel="stylesheet" href="./styles.css?v=39">
 </head>
 <body>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
@@ -83,9 +83,10 @@
           <article class="stat"><span>برنزی</span><strong id="stat-bronze">۰</strong></article>
         </div>
 
-        <div class="content-grid">
-          <section class="panel create-panel">
-            <div class="section-head"><h2>ساخت کد فعال‌سازی</h2></div>
+        <div class="content-grid accordion-grid">
+          <details class="panel create-panel license-accordion">
+            <summary>ساخت کد فعال‌سازی</summary>
+            <div class="license-accordion-body">
             <form id="create-license" class="stack">
               <label>سطح دسترسی<select id="new-tier"><option value="gold">طلایی</option><option value="silver">نقره‌ای</option><option value="bronze">برنزی</option></select></label>
               <div class="two-col">
@@ -102,12 +103,15 @@
               <strong id="new-key"></strong>
               <div class="license-card-actions"><button id="copy-key" class="btn secondary" type="button">کپی کد</button><button id="share-key" class="btn share-btn" type="button">اشتراک</button><button id="print-key" class="btn print-btn" type="button">چاپ کارت</button></div>
             </div>
-          </section>
+            </div>
+          </details>
 
-          <section class="panel list-panel">
-            <div class="section-head wrap"><h2>لایسنس‌های ساخته‌شده</h2><div class="export-actions"><button id="export-csv" class="btn secondary" type="button">خروجی CSV / Excel</button><button id="download-backup" class="btn danger-outline" type="button">پشتیبان کامل</button><button id="choose-backup" class="btn restore-btn" type="button">بازیابی پشتیبان</button><input id="backup-file" class="hidden" type="file" accept="application/json,.json"></div><div id="restore-summary" class="restore-summary hidden"></div><div class="filters advanced-filters"><input id="search" type="search" placeholder="کد، دستگاه یا مشتری"><select id="status-filter"><option value="all">همه وضعیت‌ها</option><option value="active">فعال</option><option value="suspended">معلق</option><option value="revoked">لغوشده</option></select><select id="tier-filter"><option value="all">همه سطح‌ها</option><option value="gold">طلایی</option><option value="silver">نقره‌ای</option><option value="bronze">برنزی</option></select><select id="expiry-filter"><option value="all">همه تاریخ‌ها</option><option value="expired">منقضی‌شده</option><option value="soon">پایان تا ۷ روز</option><option value="valid">دارای اعتبار</option><option value="unlimited">بدون انقضا</option></select><select id="device-filter"><option value="all">همه دستگاه‌ها</option><option value="none">بدون دستگاه</option><option value="available">ظرفیت آزاد</option><option value="full">ظرفیت تکمیل</option></select></div></div>
+          <details class="panel list-panel license-accordion">
+            <summary>لایسنس‌های ساخته‌شده</summary>
+            <div class="license-accordion-body"><div class="filters advanced-filters"><input id="search" type="search" placeholder="کد، دستگاه یا مشتری"><select id="status-filter"><option value="all">همه وضعیت‌ها</option><option value="active">فعال</option><option value="suspended">معلق</option><option value="revoked">لغوشده</option></select><select id="tier-filter"><option value="all">همه سطح‌ها</option><option value="gold">طلایی</option><option value="silver">نقره‌ای</option><option value="bronze">برنزی</option></select><select id="expiry-filter"><option value="all">همه تاریخ‌ها</option><option value="expired">منقضی‌شده</option><option value="soon">پایان تا ۷ روز</option><option value="valid">دارای اعتبار</option><option value="unlimited">بدون انقضا</option></select><select id="device-filter"><option value="all">همه دستگاه‌ها</option><option value="none">بدون دستگاه</option><option value="available">ظرفیت آزاد</option><option value="full">ظرفیت تکمیل</option></select></div>
             <div id="license-list" class="license-list"><div class="empty">درحال دریافت اطلاعات…</div></div>
-          </section>
+            </div>
+          </details>
         </div>
         <details id="trash-section" class="panel embedded-trash">
           <summary>♲ سطل زباله لایسنس‌ها</summary>
@@ -120,16 +124,18 @@
       </section>
 
       <section id="audit-tab" class="hidden">
-        <section class="panel audit-panel"><div class="section-head"><h2>تاریخچه تغییرات</h2><div class="history-actions"><button id="refresh-audit" class="btn secondary" type="button">بروزرسانی</button><button id="delete-audit" class="btn delete-history" type="button">حذف تاریخچه</button></div></div><div id="audit-list" class="audit-list"><div class="empty">برای دریافت تاریخچه، بروزرسانی را بزن.</div></div></section>
+        <section class="panel audit-panel"><div class="section-head"><h2>تاریخچه تغییرات</h2><div class="history-actions"><button id="refresh-audit" class="btn secondary" type="button">بروزرسانی</button><button id="delete-all-audit" class="btn delete-history" type="button">حذف همه</button></div></div><div id="audit-list" class="audit-list"><div class="empty">برای دریافت تاریخچه، بروزرسانی را بزن.</div></div></section>
       </section>
       <section id="settings-tab" class="hidden">
         <section class="panel security-panel">
-          <div class="section-head"><h2>امنیت حساب مدیر</h2><span id="security-badge" class="security-badge">درحال بررسی…</span></div>
-          <p class="note">برای ساخت، حذف، ویرایش و مسدودسازی لایسنس‌ها، ورود دومرحله‌ای لازم است.</p>
+          <div class="section-head"><h2>تنظیمات</h2></div>
+          <div id="mfa-status-card" class="mfa-status-card">
+            <div><h3>ورود دومرحله‌ای</h3><strong id="mfa-state">درحال بررسی…</strong></div>
+            <button id="mfa-toggle" class="btn" type="button">درحال بررسی…</button>
+          </div>
           <div id="mfa-setup" class="security-block">
             <h3>فعال‌سازی ورود دومرحله‌ای</h3>
             <p>دکمه زیر را بزن و QR را با Google Authenticator یا Microsoft Authenticator اسکن کن.</p>
-            <button id="start-mfa" class="btn primary" type="button">ساخت QR امنیتی</button>
             <div id="mfa-enroll-box" class="hidden">
               <img id="mfa-qr" class="mfa-qr" alt="QR ورود دومرحله‌ای">
               <code id="mfa-secret" class="mfa-secret"></code>
@@ -139,15 +145,17 @@
               </form>
             </div>
           </div>
-          <div id="mfa-active" class="security-block hidden">
-            <h3>ورود دومرحله‌ای فعال است ✅</h3>
-            <p>عملیات حساس فقط پس از واردکردن کد امنیتی انجام می‌شود.</p>
+          <div class="security-block file-tools-block">
+            <h3>فایل‌ها و پشتیبان</h3>
+            <div class="export-actions"><button id="export-csv" class="btn secondary" type="button">خروجی CSV / Excel</button><button id="download-backup" class="btn danger-outline" type="button">پشتیبان کامل</button><button id="choose-backup" class="btn restore-btn" type="button">بازیابی پشتیبان</button><input id="backup-file" class="hidden" type="file" accept="application/json,.json"></div><div id="restore-summary" class="restore-summary hidden"></div>
           </div>
-          <div class="security-block danger-zone">
-            <h3>مدیریت نشست‌ها</h3>
-            <div class="account-actions"><button id="logout" class="btn logout-current" type="button">خروج از حساب</button><button id="logout-all" class="btn danger-outline" type="button">خروج از همه دستگاه‌ها</button></div>
+          <div class="security-block sessions-block">
+            <div class="section-head"><h3>مدیریت نشست‌ها</h3><span id="session-count" class="session-count">۰ نشست</span></div>
+            <div id="sessions-list" class="sessions-list"><div class="empty">درحال دریافت نشست‌ها…</div></div>
+            <button id="logout-all" class="btn danger-outline logout-all" type="button">خروج از همه نشست‌ها</button>
           </div>
         </section>
+        <button id="logout" class="btn logout-current settings-logout" type="button">خروج از حساب</button>
       </section>
     </main>
   </div>
@@ -175,6 +183,6 @@
       <div class="calendar-actions"><button id="jalali-clear" class="btn danger" type="button">بدون انقضا</button><button id="jalali-cancel" class="btn secondary" type="button">انصراف</button><button id="jalali-apply" class="btn primary" type="button">ثبت تاریخ و ساعت</button></div>
     </div>
   </div>
-  <script src="./app.js?v=38" defer></script>
+  <script src="./app.js?v=39" defer></script>
 </body>
 </html>

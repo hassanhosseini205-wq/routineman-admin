@@ -214,3 +214,39 @@ body{background:linear-gradient(145deg,#f8f9fd 0%,#f1f2f9 55%,#f7f4ff 100%);font
 .app .feature{background:#202127;color:#f4f4f7}
 .app .feature:has(input:checked){background:#2b2540;color:#fff}
 .app .meta-row span{background:#22242b;color:#c9cbd3}
+
+/* نسخه ۳۹: آکاردئون لایسنس، تنظیمات امنیت و نشست‌های دستگاه */
+.app .stat span{color:#fff;font-weight:800}
+.accordion-grid{align-items:start}
+.license-accordion{padding:0;overflow:hidden;position:static}
+.license-accordion>summary{display:flex;align-items:center;min-height:68px;padding:15px 20px;list-style:none;cursor:pointer;color:#fff;font-size:1.08rem;font-weight:900}
+.license-accordion>summary::-webkit-details-marker{display:none}
+.license-accordion>summary:after{content:"⌄";margin-right:auto;color:#a98cff;font-size:1.5rem;transition:transform .2s}
+.license-accordion[open]>summary:after{transform:rotate(180deg)}
+.license-accordion-body{padding:0 20px 20px;border-top:1px solid #30323a}
+.license-accordion .stack{margin-top:18px}
+.mfa-status-card{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:18px;padding:18px;border:2px solid;border-radius:18px;color:#fff}
+.mfa-status-card h3{margin:0}.mfa-status-card strong{display:block;margin-top:3px;font-size:.9rem}
+.mfa-status-card.is-active{background:#087a45;border-color:#28cf82}.mfa-status-card.is-inactive{background:#9d162a;border-color:#ef5068}
+.mfa-status-card .btn{background:#fff;color:#171526;min-width:120px}
+.file-tools-block .export-actions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:12px}
+.sessions-block .section-head h3{margin:0}
+.session-count{padding:4px 10px;border-radius:999px;background:#2b2d35;color:#fff;font-size:.75rem;font-weight:900}
+.sessions-list{display:grid;gap:10px;margin-top:14px}
+.session-card{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:13px;border:1px solid #383b45;border-radius:14px;background:#22242b}
+.session-card.current{border-color:#7454df;background:#29233c}
+.session-main{display:flex;min-width:0;flex-direction:column}.session-main strong{color:#fff}.session-main span{color:#d1d3dc;font-size:.82rem}.session-main small{color:#999ca8;font-size:.72rem}
+.session-logout{flex:0 0 auto;background:#7f1d2d;color:#fff;border:1px solid #bd4054;padding:8px 11px;min-height:38px;font-size:.75rem}
+.logout-all{width:100%;margin-top:14px}
+.settings-logout{display:block;width:min(680px,100%);margin:22px auto 0;background:#a71931;color:#fff;border:1px solid #ee4b66;box-shadow:0 10px 28px rgba(167,25,49,.25)}
+.audit-row{grid-template-columns:150px minmax(0,1fr) auto;align-items:center}
+.audit-delete-one{min-height:36px;padding:6px 10px;background:#8e1e30;color:#fff;border:1px solid #ca435a;font-size:.72rem}
+
+@media(max-width:760px){
+  .license-accordion>summary{min-height:62px;padding:13px 15px}
+  .license-accordion-body{padding:0 13px 15px}
+  .file-tools-block .export-actions{grid-template-columns:1fr}
+  .mfa-status-card{padding:14px}.mfa-status-card .btn{min-width:105px;padding-inline:10px}
+  .session-card{align-items:stretch;flex-direction:column}.session-logout{width:100%}
+  .audit-row{grid-template-columns:1fr}.audit-delete-one{width:100%}
+}
