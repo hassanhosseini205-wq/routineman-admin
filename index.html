@@ -7,7 +7,7 @@
   <meta name="robots" content="noindex,nofollow">
   <title>مدیریت لایسنس RoutineMan</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%236d3df5'/%3E%3Cpath d='M17 33l10 10 21-24' fill='none' stroke='white' stroke-width='8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="./styles.css?v=30">
+  <link rel="stylesheet" href="./styles.css?v=31">
 </head>
 <body>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
@@ -29,6 +29,20 @@
         <label>ایمیل حساب مدیر<input id="recovery-email" type="email" autocomplete="email" required placeholder="name@example.com"></label>
         <button class="btn secondary" type="submit">ارسال لینک بازیابی به ایمیل</button>
         <p class="note">لینک تغییر رمز فقط به ایمیل ثبت‌شده ارسال می‌شود.</p>
+      </form>
+    </section>
+  </main>
+
+  <main id="mfa-view" class="auth-shell hidden">
+    <section class="auth-card">
+      <div class="brand-mark"><span>🔐</span></div>
+      <p class="eyebrow">ورود دومرحله‌ای</p>
+      <h1>کد امنیتی را وارد کن</h1>
+      <p class="muted">کد ۶ رقمی برنامه Authenticator را وارد کن.</p>
+      <form id="mfa-login-form" class="stack">
+        <label>کد یک‌بارمصرف<input id="mfa-login-code" class="otp-input" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="6" required placeholder="۱۲۳۴۵۶"></label>
+        <button class="btn primary" type="submit">تأیید و ورود</button>
+        <button id="mfa-cancel" class="btn secondary" type="button">بازگشت</button>
       </form>
     </section>
   </main>
@@ -55,6 +69,7 @@
         <button class="nav-item" data-tab="tiers">◇ تنظیم سطح‌ها</button>
         <button class="nav-item" data-tab="audit">◎ تاریخچه</button>
         <button class="nav-item" data-tab="trash">♲ سطل زباله</button>
+        <button class="nav-item" data-tab="security">⌾ امنیت</button>
       </nav>
       <button id="logout" class="nav-item logout">خروج از حساب</button>
     </aside>
@@ -109,6 +124,33 @@
       <section id="trash-tab" class="hidden">
         <section class="panel trash-panel"><div class="section-head"><h2>سطل زباله لایسنس‌ها</h2><button id="refresh-trash" class="btn secondary" type="button">بروزرسانی</button></div><p class="note">لایسنس حذف‌شده در برنامه کار نمی‌کند. می‌توانی آن را برگردانی یا برای همیشه پاک کنی.</p><div id="trash-list" class="license-list"><div class="empty">برای دریافت سطل زباله، بروزرسانی را بزن.</div></div></section>
       </section>
+      <section id="security-tab" class="hidden">
+        <section class="panel security-panel">
+          <div class="section-head"><h2>امنیت حساب مدیر</h2><span id="security-badge" class="security-badge">درحال بررسی…</span></div>
+          <p class="note">برای ساخت، حذف، ویرایش و مسدودسازی لایسنس‌ها، ورود دومرحله‌ای لازم است.</p>
+          <div id="mfa-setup" class="security-block">
+            <h3>فعال‌سازی ورود دومرحله‌ای</h3>
+            <p>دکمه زیر را بزن و QR را با Google Authenticator یا Microsoft Authenticator اسکن کن.</p>
+            <button id="start-mfa" class="btn primary" type="button">ساخت QR امنیتی</button>
+            <div id="mfa-enroll-box" class="hidden">
+              <img id="mfa-qr" class="mfa-qr" alt="QR ورود دومرحله‌ای">
+              <code id="mfa-secret" class="mfa-secret"></code>
+              <form id="mfa-enroll-form" class="stack">
+                <label>کد ۶ رقمی برنامه<input id="mfa-enroll-code" class="otp-input" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="6" required></label>
+                <button class="btn primary" type="submit">تأیید و فعال‌سازی</button>
+              </form>
+            </div>
+          </div>
+          <div id="mfa-active" class="security-block hidden">
+            <h3>ورود دومرحله‌ای فعال است ✅</h3>
+            <p>عملیات حساس فقط پس از واردکردن کد امنیتی انجام می‌شود.</p>
+          </div>
+          <div class="security-block danger-zone">
+            <h3>مدیریت نشست‌ها</h3>
+            <button id="logout-all" class="btn danger-outline" type="button">خروج از همه دستگاه‌ها</button>
+          </div>
+        </section>
+      </section>
     </main>
   </div>
 
@@ -126,6 +168,6 @@
       <button id="trash-license" class="btn danger-outline" type="button">انتقال لایسنس به سطل زباله</button>
     </form>
   </dialog>
-  <script src="./app.js?v=30" defer></script>
+  <script src="./app.js?v=31" defer></script>
 </body>
 </html>
