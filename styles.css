@@ -74,11 +74,15 @@ body{background:linear-gradient(145deg,#f8f9fd 0%,#f1f2f9 55%,#f7f4ff 100%);font
 .quick-renew span{font-weight:800}.quick-renew button{border:1px solid #d9d1f4;border-radius:9px;background:#fff;color:var(--purple-2);padding:6px 9px;font-weight:800}
 .audit-list{display:grid;gap:9px;margin-top:16px}.audit-row{display:grid;grid-template-columns:150px 1fr;gap:12px;padding:11px 13px;border:1px solid var(--line);border-radius:13px;background:#faf9fd}.audit-row time{direction:ltr;color:var(--muted);font-size:.75rem}.audit-row strong{display:block}.audit-row small{color:var(--muted)}
 @media(max-width:760px){
-  .sidebar{grid-template-columns:repeat(5,minmax(0,1fr))}
+  .sidebar{grid-template-columns:repeat(6,minmax(0,1fr))}
   .nav-item,.logout{white-space:normal;line-height:1.3;font-size:.62rem}
   .audit-row{grid-template-columns:1fr;gap:3px}
   .customer-line{font-size:.72rem}
 }
+
+/* نسخه ۳۱: امنیت مدیر و ورود دومرحله‌ای */
+.security-panel{max-width:680px;margin-inline:auto}.security-block{margin-top:18px;padding:18px;border:1px solid var(--line);border-radius:16px;background:#faf9fd}.security-block h3{margin:0 0 6px}.security-block p{margin:0 0 14px;color:var(--muted)}.security-badge{padding:5px 10px;border-radius:999px;background:var(--red-bg);color:var(--red);font-size:.72rem;font-weight:900}.security-badge.secure{background:var(--green-bg);color:var(--green)}.mfa-qr{display:block;width:min(230px,100%);margin:18px auto;border:10px solid #fff;border-radius:14px}.mfa-secret{display:block;padding:10px;border-radius:10px;background:#eee;direction:ltr;text-align:center;word-break:break-all}.otp-input{text-align:center;direction:ltr;font-size:1.3rem;font-weight:900;letter-spacing:.3em}.danger-zone{border-color:#f2c5cc;background:#fffafb}
+@media(max-width:760px){.security-block{padding:14px}.sidebar{gap:4px}.nav-item,.logout{font-size:.57rem;padding-inline:2px}}
 
 /* نسخه ۲۸: تاریخ شمسی و ناوبری تفکیک‌شده */
 .expiry-fields{display:grid;grid-template-columns:minmax(0,1fr) 88px;gap:8px;direction:ltr}
