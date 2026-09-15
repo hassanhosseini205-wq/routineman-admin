@@ -7,7 +7,7 @@
   <meta name="robots" content="noindex,nofollow">
   <title>مدیریت لایسنس RoutineMan</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%236d3df5'/%3E%3Cpath d='M17 33l10 10 21-24' fill='none' stroke='white' stroke-width='8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="./styles.css?v=35">
+  <link rel="stylesheet" href="./styles.css?v=36">
 </head>
 <body>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
@@ -168,7 +168,7 @@
       <button id="trash-license" class="btn danger-outline" type="button">انتقال لایسنس به سطل زباله</button>
     </form>
   </dialog>
-  <dialog id="jalali-dialog">
+  <div id="jalali-dialog" class="jalali-overlay hidden" role="dialog" aria-modal="true" aria-label="انتخاب تاریخ و ساعت شمسی">
     <div class="jalali-card">
       <div class="jalali-head"><button id="jalali-next" class="calendar-nav" type="button" aria-label="ماه بعد">‹</button><strong id="jalali-title"></strong><button id="jalali-prev" class="calendar-nav" type="button" aria-label="ماه قبل">›</button></div>
       <div class="weekday-row"><span>ش</span><span>ی</span><span>د</span><span>س</span><span>چ</span><span>پ</span><span>ج</span></div>
@@ -176,7 +176,7 @@
       <div class="time-picker"><label>ساعت<select id="jalali-hour"></select></label><b>:</b><label>دقیقه<select id="jalali-minute"></select></label></div>
       <div class="calendar-actions"><button id="jalali-clear" class="btn danger" type="button">بدون انقضا</button><button id="jalali-cancel" class="btn secondary" type="button">انصراف</button><button id="jalali-apply" class="btn primary" type="button">ثبت تاریخ و ساعت</button></div>
     </div>
-  </dialog>
-  <script src="./app.js?v=35" defer></script>
+  </div>
+  <script src="./app.js?v=36" defer></script>
 </body>
 </html>
