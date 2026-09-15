@@ -7,7 +7,7 @@
   <meta name="robots" content="noindex,nofollow">
   <title>مدیریت لایسنس RoutineMan</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%236d3df5'/%3E%3Cpath d='M17 33l10 10 21-24' fill='none' stroke='white' stroke-width='8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="./styles.css?v=34">
+  <link rel="stylesheet" href="./styles.css?v=35">
 </head>
 <body>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
@@ -92,7 +92,7 @@
               <label>سطح دسترسی<select id="new-tier"><option value="gold">طلایی</option><option value="silver">نقره‌ای</option><option value="bronze">برنزی</option></select></label>
               <div class="two-col">
                 <label>تعداد دستگاه<input id="new-max-devices" type="number" min="1" max="10" value="1"></label>
-                <label>تاریخ پایان شمسی<div class="expiry-fields"><input id="new-expiry-date" type="text" inputmode="numeric" placeholder="1405/06/22" maxlength="10"><input id="new-expiry-time" type="text" inputmode="numeric" placeholder="17:10" maxlength="5"></div></label>
+                <label>تاریخ و ساعت پایان شمسی<div class="expiry-fields"><input id="new-expiry-date" class="jalali-trigger" type="text" inputmode="none" placeholder="انتخاب تاریخ شمسی" readonly><input id="new-expiry-time" class="jalali-trigger" type="text" inputmode="none" placeholder="ساعت" readonly></div></label>
               </div>
               <div class="two-col"><label>نام مشتری<input id="new-customer-name" type="text" maxlength="120" placeholder="نام و نام خانوادگی"></label><label>شماره تماس<input id="new-customer-phone" type="tel" maxlength="30" placeholder="09xxxxxxxxx"></label></div>
               <label>مبلغ خرید (تومان)<input id="new-purchase-amount" type="number" min="0" step="1000" placeholder="اختیاری"></label>
@@ -160,7 +160,7 @@
       <input id="edit-id" type="hidden">
       <label>سطح<select id="edit-tier"><option value="gold">طلایی</option><option value="silver">نقره‌ای</option><option value="bronze">برنزی</option></select></label>
       <label>وضعیت<select id="edit-status"><option value="active">فعال</option><option value="suspended">معلق</option><option value="revoked">لغوشده</option></select></label>
-      <div class="two-col"><label>تعداد دستگاه<input id="edit-max" type="number" min="1" max="10"></label><label>تاریخ پایان شمسی<div class="expiry-fields"><input id="edit-expiry-date" type="text" inputmode="numeric" placeholder="1405/06/22" maxlength="10"><input id="edit-expiry-time" type="text" inputmode="numeric" placeholder="17:10" maxlength="5"></div></label></div>
+      <div class="two-col"><label>تعداد دستگاه<input id="edit-max" type="number" min="1" max="10"></label><label>تاریخ و ساعت پایان شمسی<div class="expiry-fields"><input id="edit-expiry-date" class="jalali-trigger" type="text" inputmode="none" placeholder="انتخاب تاریخ شمسی" readonly><input id="edit-expiry-time" class="jalali-trigger" type="text" inputmode="none" placeholder="ساعت" readonly></div></label></div>
       <div class="two-col"><label>نام مشتری<input id="edit-customer-name" type="text" maxlength="120"></label><label>شماره تماس<input id="edit-customer-phone" type="tel" maxlength="30"></label></div>
       <label>مبلغ خرید (تومان)<input id="edit-purchase-amount" type="number" min="0" step="1000"></label>
       <div class="quick-renew"><span>تمدید سریع:</span><button type="button" data-renew="30">۱ ماه</button><button type="button" data-renew="90">۳ ماه</button><button type="button" data-renew="180">۶ ماه</button><button type="button" data-renew="365">۱ سال</button></div>
@@ -168,6 +168,15 @@
       <button id="trash-license" class="btn danger-outline" type="button">انتقال لایسنس به سطل زباله</button>
     </form>
   </dialog>
-  <script src="./app.js?v=34" defer></script>
+  <dialog id="jalali-dialog">
+    <div class="jalali-card">
+      <div class="jalali-head"><button id="jalali-next" class="calendar-nav" type="button" aria-label="ماه بعد">‹</button><strong id="jalali-title"></strong><button id="jalali-prev" class="calendar-nav" type="button" aria-label="ماه قبل">›</button></div>
+      <div class="weekday-row"><span>ش</span><span>ی</span><span>د</span><span>س</span><span>چ</span><span>پ</span><span>ج</span></div>
+      <div id="jalali-days" class="jalali-days"></div>
+      <div class="time-picker"><label>ساعت<select id="jalali-hour"></select></label><b>:</b><label>دقیقه<select id="jalali-minute"></select></label></div>
+      <div class="calendar-actions"><button id="jalali-clear" class="btn danger" type="button">بدون انقضا</button><button id="jalali-cancel" class="btn secondary" type="button">انصراف</button><button id="jalali-apply" class="btn primary" type="button">ثبت تاریخ و ساعت</button></div>
+    </div>
+  </dialog>
+  <script src="./app.js?v=35" defer></script>
 </body>
 </html>
