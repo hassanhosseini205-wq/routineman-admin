@@ -1,0 +1,53 @@
+name: Apply RoutineMan Admin v42 toast UI
+
+on:
+  push:
+    paths:
+      - 'tools/apply_v42_toast_center.py'
+      - '.github/workflows/apply-v42.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  patch-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Apply patch
+        run: python tools/apply_v42_toast_center.py
+      - name: Validate toast styling and cache version
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          css=Path('styles.css').read_text(encoding='utf-8')
+          html=Path('index.html').read_text(encoding='utf-8')
+          checks=[
+            '/* v42 centered global toast */' in css,
+            'top:50%!important' in css,
+            'left:50%!important' in css,
+            'border:1px solid #fff!important' in css,
+            'background:#111318!important' in css,
+            'translate(-50%,-50%)' in css,
+            'styles.css?v=42' in html,
+          ]
+          assert all(checks), checks
+          print('v42 toast checks: PASS')
+          PY
+      - name: Commit generated patch
+        run: |
+          if git diff --quiet; then
+            echo 'No generated changes to commit.'
+            exit 0
+          fi
+          git config user.name 'RoutineMan CI'
+          git config user.email 'actions@users.noreply.github.com'
+          git add styles.css index.html
+          git commit -m 'Center global notifications with white outline [skip ci]'
+          git push
