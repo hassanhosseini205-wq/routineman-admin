@@ -1,0 +1,27 @@
+name: Temporary Android Toolchain Export
+on:
+  push:
+    branches: [tmp-routineman-toolchain-20260916]
+permissions:
+  contents: read
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Prepare Android 35 toolchain
+        shell: bash
+        run: |
+          set -euo pipefail
+          yes | "$ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager" --licenses >/dev/null || true
+          "$ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager" "platforms;android-35" "build-tools;35.0.0"
+          mkdir -p toolchain/platforms toolchain/build-tools
+          cp -a "$ANDROID_SDK_ROOT/platforms/android-35" toolchain/platforms/
+          cp -a "$ANDROID_SDK_ROOT/build-tools/35.0.0" toolchain/build-tools/
+          find toolchain -type f -maxdepth 4 | sort | head -100
+      - name: Upload toolchain
+        uses: actions/upload-artifact@v4
+        with:
+          name: android-sdk35-buildtools35
+          path: toolchain
+          compression-level: 6
+          retention-days: 1
