@@ -250,3 +250,21 @@ body{background:linear-gradient(145deg,#f8f9fd 0%,#f1f2f9 55%,#f7f4ff 100%);font
   .session-card{align-items:stretch;flex-direction:column}.session-logout{width:100%}
   .audit-row{grid-template-columns:1fr}.audit-delete-one{width:100%}
 }
+
+
+/* RoutineMan Admin v40 security fixes */
+#mfa-secret.mfa-secret {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 14px 0;
+  padding: 14px 16px;
+  background: #050608 !important;
+  color: #ffffff !important;
+  border: 1px solid #343640 !important;
+  border-radius: 14px;
+  direction: ltr;
+  text-align: center;
+  overflow-wrap: anywhere;
+  word-break: break-all;
+}
